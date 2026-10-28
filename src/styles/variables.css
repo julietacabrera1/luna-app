@@ -1,0 +1,27 @@
+
+:root {
+  /* Colores principales de LUNA */
+  --celeste: #4DB6E2;
+  --celeste-claro: #EAF7FC;
+  --azul: #1E3A5F;
+  --azul-hover: #294F7C;
+
+  /* Fondos */
+  --blanco: #FFFFFF;
+  --fondo: #FFFFFF;
+  --panel: #F1F4F7;
+
+  /* Textos y bordes */
+  --texto: #26374A;
+  --gris: #69798B;
+  --gris-claro: #DCE3E8;
+  --borde: #E2E9EF;
+
+  /* Tipografía */
+  --tipografia: 'Nunito', 'Segoe UI', sans-serif;
+
+  /* Apariencia */
+  --radio: 14px;
+  --sombra: 0 4px 18px rgba(30, 58, 95, 0.06);
+  --transicion: 0.2s ease;
+}
