@@ -963,4 +963,21 @@ img {
   }
 }
 
+.boton-volver {
+  display: block;
+  margin: 20px auto 30px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 12px;
+  background: #e6f4fb;
+  color: #1e3a5f;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
 
+.boton-volver:hover {
+  background: #d2ebf7;
+}

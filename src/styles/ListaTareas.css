@@ -780,3 +780,31 @@ select:focus-visible {
     transition: none;
   }
 }
+
+
+.acciones-tarea {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.editar {
+  border: none;
+  background: #e3f3fc;
+  color: #287da9;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.editar:hover {
+  background: #cceafa;
+}
+
+.formulario-editar {
+  flex: 1;
+  min-width: 0;
+}
+

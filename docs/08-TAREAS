@@ -5,8 +5,8 @@
 ### 1. Identidad de marca
 - [x] Definir nombre y eslogan
 - [x] Diseñar logo
-- [x] Seleccionar paleta de colores y tipografias
-- [ ] Ajustar tono de comunicacion
+- [x] Seleccionar paleta de colores y tipografías
+- [x] Ajustar tono de comunicación
 
 ---
 
@@ -18,29 +18,29 @@
 - [x] Documentar DATOS.md
 - [x] Describir DISEÑO-UI.md
 - [x] Establecer CONVENCIONES.md
-- [ ] Elaborar MEMORY.md
-- [ ] Revisar SEO.md
-- [ ] Redactar SEGURIDAD.md
+- [x] Elaborar MEMORY.md
+- [x] Revisar SEO.md
+- [x] Redactar SEGURIDAD.md
 
 ---
 
 ### 3. Desarrollo
-- [ ] Configurar repositorio en GitHub
-- [ ] Crear estructura inicial del proyecto
-- [ ] Implementar componentes basicos (Inicio, Tareas, Calendario, Recordatorios, Perfil)
-- [ ] Conectar base de datos PostgreSQL
-- [ ] Integrar despliegue en Vercel
+- [x] Configurar repositorio en GitHub
+- [x] Crear estructura inicial del proyecto
+- [x] Implementar componentes básicos (Inicio, Tareas, Calendario, Recordatorios, Perfil y Mi progreso)
+- [x] Conectar base de datos PostgreSQL mediante Supabase
+- [x] Integrar despliegue en Netlify
 
 ---
 
 ### 4. Pruebas
 - [ ] Realizar pruebas unitarias
-- [ ] Probar flujo de usuario completo
-- [ ] Ajustar errores y mejoras
+- [x] Probar flujo de usuario completo
+- [x] Ajustar errores y mejoras
 
 ---
 
-### 5. Publicacion
-- [ ] Subir version inicial a la Bitacora Digital
+### 5. Publicación
+- [ ] Subir versión inicial a la Bitácora Digital
 - [ ] Documentar proceso en informe escrito
 - [ ] Presentar evidencia de la carpeta completa

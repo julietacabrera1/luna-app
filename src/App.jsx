@@ -8,6 +8,7 @@ import Calendario from "./componentes/Calendario";
 import Recordatorios from "./componentes/Recordatorios";
 import PerfilInicial from "./componentes/PerfilInicial";
 import PerfilUsuario from "./componentes/PerfilUsuario";
+import MiProgreso from "./componentes/MiProgreso";
 
 import "./styles/variables.css";
 import "./App.css";
@@ -343,42 +344,44 @@ function App() {
         </nav>
       )}
 
-      <main className="luna-vista">
+                 <main className="luna-vista">
         {pantallaMenu ? (
           pantallaMenu === "perfil" ? (
-            <PerfilUsuario
-              perfil={perfil}
-              alGuardarPerfil={guardarPerfil}
-              alVolver={volverDesdeMenu}
-            />
+            <>
+              <PerfilUsuario
+                perfil={perfil}
+                alGuardarPerfil={guardarPerfil}
+                alVolver={volverDesdeMenu}
+              />
+
+              <button
+                type="button"
+                className="boton-volver"
+                onClick={volverDesdeMenu}
+              >
+                ← Volver
+              </button>
+            </>
+          ) : pantallaMenu === "progreso" ? (
+            <>
+              <MiProgreso />
+
+              <button
+                type="button"
+                className="boton-volver"
+                onClick={volverDesdeMenu}
+              >
+                ← Volver
+              </button>
+            </>
           ) : (
-            <section className="luna-pantalla-proximamente">
-              <div className="proximamente-contenido">
-                <div className="proximamente-icono">
-                  {opcionActiva?.icono}
-                </div>
-
-                <span className="proximamente-etiqueta">
-                  PRÓXIMAMENTE
-                </span>
-
-                <h2>{opcionActiva?.nombre}</h2>
-
-                <p>
-                  Estamos preparando este espacio para que
-                  puedas personalizar y disfrutar todavía más
-                  de LUNA.
-                </p>
-
-                <button
-                  type="button"
-                  className="boton-volver"
-                  onClick={volverDesdeMenu}
-                >
-                  ← Volver
-                </button>
-              </div>
-            </section>
+            <button
+              type="button"
+              className="boton-volver"
+              onClick={volverDesdeMenu}
+            >
+              ← Volver
+            </button>
           )
         ) : (
           renderizarModulo()

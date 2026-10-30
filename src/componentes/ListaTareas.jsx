@@ -22,6 +22,11 @@ function ListaTareas() {
   const [filtro, setFiltro] = useState("Todas");
   const [formularioAbierto, setFormularioAbierto] = useState(false);
 
+  // Estados para editar tareas
+  const [tareaEditando, setTareaEditando] = useState(null);
+  const [textoEditado, setTextoEditado] = useState("");
+  const [categoriaEditada, setCategoriaEditada] = useState("");
+
   const [usuarioId, setUsuarioId] = useState(null);
   const [cargando, setCargando] = useState(true);
   const [guardando, setGuardando] = useState(false);
@@ -29,7 +34,7 @@ function ListaTareas() {
 
   const inputRef = useRef(null);
 
-  // Cargar las categorías y tareas del usuario que inició sesión.
+  // Cargar categorías y tareas
   useEffect(() => {
     let activo = true;
 
@@ -38,8 +43,10 @@ function ListaTareas() {
       setError("");
 
       try {
-        const { data: { user }, error: errorUsuario } =
-          await supabase.auth.getUser();
+        const {
+          data: { user },
+          error: errorUsuario,
+        } = await supabase.auth.getUser();
 
         if (errorUsuario) throw errorUsuario;
 
@@ -50,7 +57,6 @@ function ListaTareas() {
         if (!activo) return;
         setUsuarioId(user.id);
 
-        // Buscar las categorías de este usuario.
         let { data: categoriasDB, error: errorCategorias } =
           await supabase
             .from("categorias")
@@ -59,7 +65,6 @@ function ListaTareas() {
 
         if (errorCategorias) throw errorCategorias;
 
-        // Crear las categorías predeterminadas si todavía no existen.
         if (!categoriasDB || categoriasDB.length === 0) {
           const nuevasCategorias = categoriasIniciales.map((nombre) => ({
             usuario_id: user.id,
@@ -84,10 +89,9 @@ function ListaTareas() {
           categoriasDB = resultadoCategorias.data;
         }
 
-        // Buscar las tareas del mismo usuario.
         const { data: tareasDB, error: errorTareas } = await supabase
           .from("tareas")
-          .select("id, texto, categoria_id, completada, creado_en")
+          .select("id, texto, categoria_id, completada, creado_en, completada_en")
           .eq("usuario_id", user.id)
           .order("creado_en", { ascending: false });
 
@@ -96,11 +100,11 @@ function ListaTareas() {
         if (!activo) return;
 
         setCategorias(categoriasDB || []);
+
         setCategoriaNueva(
           categoriasDB?.length ? String(categoriasDB[0].id) : ""
         );
 
-        // Mostrar el nombre de la categoría en cada tarea.
         const tareasAdaptadas = (tareasDB || []).map((tarea) => {
           const categoria = (categoriasDB || []).find(
             (c) => String(c.id) === String(tarea.categoria_id)
@@ -113,13 +117,12 @@ function ListaTareas() {
         });
 
         setTareas(tareasAdaptadas);
+
       } catch (err) {
         console.error("Error al cargar LUNA:", err);
 
         if (activo) {
-          setError(
-            err.message || "No se pudieron cargar tus tareas."
-          );
+          setError(err.message || "No se pudieron cargar tus tareas.");
         }
       } finally {
         if (activo) setCargando(false);
@@ -141,6 +144,7 @@ function ListaTareas() {
       ? tareas
       : tareas.filter((t) => t.categoria === filtro);
 
+  // Agregar una tarea
   async function agregar(e) {
     e?.preventDefault();
 
@@ -175,8 +179,9 @@ function ListaTareas() {
           texto,
           categoria_id: categoriaSeleccionada.id,
           completada: false,
+          
         })
-        .select("id, texto, categoria_id, completada, creado_en")
+        .select("id, texto, categoria_id, completada, creado_en, completada_en")
         .single();
 
       if (errorInsertar) throw errorInsertar;
@@ -191,6 +196,7 @@ function ListaTareas() {
 
       setNueva("");
       setFormularioAbierto(false);
+
     } catch (err) {
       console.error("Error al guardar la tarea:", err);
       setError(err.message || "No se pudo guardar la tarea.");
@@ -199,6 +205,84 @@ function ListaTareas() {
     }
   }
 
+  // Abrir formulario de edición
+  function editar(tarea) {
+    setTareaEditando(tarea.id);
+    setTextoEditado(tarea.texto);
+    setCategoriaEditada(String(tarea.categoria_id));
+    setFormularioAbierto(false);
+  }
+
+  // Cancelar edición
+  function cancelarEdicion() {
+    setTareaEditando(null);
+    setTextoEditado("");
+    setCategoriaEditada("");
+  }
+
+  // Guardar cambios de la tarea
+  async function guardarEdicion(e) {
+    e.preventDefault();
+
+    const texto = textoEditado.trim();
+
+    if (!texto) {
+      setError("El nombre de la tarea no puede estar vacío.");
+      return;
+    }
+
+    if (!usuarioId || !tareaEditando || !categoriaEditada) {
+      setError("Comprobá los datos de la tarea.");
+      return;
+    }
+
+    setGuardando(true);
+    setError("");
+
+    try {
+      const categoriaSeleccionada = categorias.find(
+        (c) => String(c.id) === String(categoriaEditada)
+      );
+
+      if (!categoriaSeleccionada) {
+        throw new Error("No se encontró la categoría seleccionada.");
+      }
+
+      const { error: errorActualizar } = await supabase
+        .from("tareas")
+        .update({
+          texto,
+          categoria_id: categoriaSeleccionada.id,
+        })
+        .eq("id", tareaEditando)
+        .eq("usuario_id", usuarioId);
+
+      if (errorActualizar) throw errorActualizar;
+
+      setTareas((anteriores) =>
+        anteriores.map((tarea) =>
+          tarea.id === tareaEditando
+            ? {
+                ...tarea,
+                texto,
+                categoria_id: categoriaSeleccionada.id,
+                categoria: categoriaSeleccionada.nombre,
+              }
+            : tarea
+        )
+      );
+
+      cancelarEdicion();
+
+    } catch (err) {
+      console.error("Error al editar la tarea:", err);
+      setError(err.message || "No se pudieron guardar los cambios.");
+    } finally {
+      setGuardando(false);
+    }
+  }
+
+  // Agregar categoría
   async function agregarCategoria(e) {
     e.preventDefault();
 
@@ -236,6 +320,7 @@ function ListaTareas() {
       setFiltro(data.nombre);
       setNuevaCategoria("");
       setFormularioCategoriaAbierto(false);
+
     } catch (err) {
       console.error("Error al crear la categoría:", err);
       setError(err.message || "No se pudo crear la categoría.");
@@ -244,6 +329,7 @@ function ListaTareas() {
     }
   }
 
+  // Eliminar tarea
   async function eliminar(id) {
     if (!usuarioId) return;
 
@@ -264,35 +350,54 @@ function ListaTareas() {
     setTareas((anteriores) =>
       anteriores.filter((t) => t.id !== id)
     );
-  }
 
-  async function toggle(id) {
-    if (!usuarioId) return;
-
-    const tarea = tareas.find((t) => t.id === id);
-    if (!tarea) return;
-
-    const nuevoEstado = !tarea.completada;
-    setError("");
-
-    const { error: errorActualizar } = await supabase
-      .from("tareas")
-      .update({ completada: nuevoEstado })
-      .eq("id", id)
-      .eq("usuario_id", usuarioId);
-
-    if (errorActualizar) {
-      console.error("Error al actualizar la tarea:", errorActualizar);
-      setError(errorActualizar.message || "No se pudo actualizar la tarea.");
-      return;
+    if (tareaEditando === id) {
+      cancelarEdicion();
     }
-
-    setTareas((anteriores) =>
-      anteriores.map((t) =>
-        t.id === id ? { ...t, completada: nuevoEstado } : t
-      )
-    );
   }
+
+  // Marcar tarea como completada o pendiente
+async function toggle(id) {
+  if (!usuarioId) return;
+
+  const tarea = tareas.find((t) => t.id === id);
+  if (!tarea) return;
+
+  const nuevoEstado = !tarea.completada;
+
+  const fechaCompletada = nuevoEstado
+    ? new Date().toISOString()
+    : null;
+
+  setError("");
+
+  const { error: errorActualizar } = await supabase
+    .from("tareas")
+    .update({
+      completada: nuevoEstado,
+      completada_en: fechaCompletada,
+    })
+    .eq("id", id)
+    .eq("usuario_id", usuarioId);
+
+  if (errorActualizar) {
+    console.error("Error al actualizar la tarea:", errorActualizar);
+    setError(errorActualizar.message || "No se pudo actualizar la tarea.");
+    return;
+  }
+
+  setTareas((anteriores) =>
+    anteriores.map((t) =>
+      t.id === id
+        ? {
+            ...t,
+            completada: nuevoEstado,
+            completada_en: fechaCompletada,
+          }
+        : t
+    )
+  );
+}
 
   function abrirNuevaTarea() {
     if (categorias.length === 0) {
@@ -300,6 +405,7 @@ function ListaTareas() {
       return;
     }
 
+    setTareaEditando(null);
     setFormularioAbierto(true);
   }
 
@@ -511,22 +617,102 @@ function ListaTareas() {
                       }`}
                     />
 
-                    <div className="tarea-contenido">
-                      <span className="tarea-texto">{tarea.texto}</span>
+                    {tareaEditando === tarea.id ? (
+                      <form
+                        className="formulario-nueva formulario-editar"
+                        onSubmit={guardarEdicion}
+                      >
+                        <label htmlFor={`editar-texto-${tarea.id}`}>
+                          Editar tarea
+                        </label>
 
-                      <span className="etiqueta-categoria">
-                        {tarea.categoria}
-                      </span>
-                    </div>
+                        <input
+                          id={`editar-texto-${tarea.id}`}
+                          type="text"
+                          value={textoEditado}
+                          onChange={(e) =>
+                            setTextoEditado(e.target.value)
+                          }
+                          maxLength={160}
+                          required
+                          autoFocus
+                        />
 
-                    <button
-                      type="button"
-                      className="eliminar"
-                      onClick={() => eliminar(tarea.id)}
-                      aria-label={`Eliminar ${tarea.texto}`}
-                    >
-                      Eliminar
-                    </button>
+                        <label htmlFor={`editar-categoria-${tarea.id}`}>
+                          Categoría
+                        </label>
+
+                        <select
+                          id={`editar-categoria-${tarea.id}`}
+                          value={categoriaEditada}
+                          onChange={(e) =>
+                            setCategoriaEditada(e.target.value)
+                          }
+                          required
+                        >
+                          {categorias.map((categoria) => (
+                            <option
+                              key={categoria.id}
+                              value={String(categoria.id)}
+                            >
+                              {categoria.nombre}
+                            </option>
+                          ))}
+                        </select>
+
+                        <div className="acciones-formulario">
+                          <button
+                            type="button"
+                            className="boton-cancelar"
+                            onClick={cancelarEdicion}
+                            disabled={guardando}
+                          >
+                            Cancelar
+                          </button>
+
+                          <button
+                            type="submit"
+                            className="boton-guardar"
+                            disabled={guardando}
+                          >
+                            {guardando ? "Guardando..." : "Guardar cambios"}
+                          </button>
+                        </div>
+                      </form>
+                    ) : (
+                      <>
+                        <div className="tarea-contenido">
+                          <span className="tarea-texto">
+                            {tarea.texto}
+                          </span>
+
+                          <span className="etiqueta-categoria">
+                            {tarea.categoria}
+                          </span>
+                        </div>
+
+                        <div className="acciones-tarea">
+                          <button
+                            type="button"
+                            className="editar"
+                            onClick={() => editar(tarea)}
+                            disabled={guardando}
+                            aria-label={`Editar ${tarea.texto}`}
+                          >
+                            Editar
+                          </button>
+
+                          <button
+                            type="button"
+                            className="eliminar"
+                            onClick={() => eliminar(tarea.id)}
+                            aria-label={`Eliminar ${tarea.texto}`}
+                          >
+                            Eliminar
+                          </button>
+                        </div>
+                      </>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -568,3 +754,4 @@ function ListaTareas() {
 }
 
 export default ListaTareas;
+
