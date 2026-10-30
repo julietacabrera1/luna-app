@@ -1,0 +1,94 @@
+# MODELO DE DATOS – LUNA
+
+## Descripción general
+
+LUNA utiliza PostgreSQL mediante Supabase para almacenar y gestionar la información de sus usuarios.
+
+La base de datos está organizada en cuatro tablas principales: `perfiles`, `categorias`, `tareas` y `eventos`. Además, utiliza `auth.users`, tabla administrada por Supabase Authentication, para gestionar las cuentas de los usuarios.
+
+## Tablas de la base de datos
+
+### 1. Usuarios – auth.users
+
+Tabla administrada por Supabase Authentication.
+
+Se encarga de gestionar las cuentas y los datos de autenticación de los usuarios.
+
+El identificador `id` se utiliza para relacionar las cuentas con las demás tablas de la aplicación.
+
+### 2. Perfiles – perfiles
+
+Almacena la información básica del perfil de cada usuario.
+
+| Campo | Tipo de dato | Descripción |
+|-------|--------------|-------------|
+| id | UUID | Identificador del perfil, relacionado con el usuario autenticado. |
+| nombre | TEXT | Nombre del usuario. |
+| avatar | TEXT | Información del avatar seleccionado. |
+| creado_en | TIMESTAMPTZ | Fecha y hora de creación del perfil. |
+
+**Relación:**
+- `perfiles.id` → `auth.users.id`.
+
+### 3. Categorías – categorias
+
+Almacena las categorías utilizadas para clasificar las tareas.
+
+| Campo | Tipo de dato | Descripción |
+|-------|--------------|-------------|
+| id | UUID | Identificador de la categoría. |
+| usuario_id | UUID | Identificador del usuario propietario. |
+| nombre | TEXT | Nombre de la categoría. |
+| creado_en | TIMESTAMPTZ | Fecha y hora de creación. |
+
+**Relación:**
+- `categorias.usuario_id` → `auth.users.id`.
+
+### 4. Tareas – tareas
+
+Almacena las tareas creadas por los usuarios.
+
+| Campo | Tipo de dato | Descripción |
+|-------|--------------|-------------|
+| id | UUID | Identificador de la tarea. |
+| usuario_id | UUID | Identificador del usuario propietario. |
+| texto | TEXT | Contenido de la tarea. |
+| categoria_id | UUID | Identificador de la categoría asociada. |
+| completada | BOOL | Indica si la tarea está completada. |
+| creado_en | TIMESTAMPTZ | Fecha y hora de creación. |
+
+**Relaciones:**
+- `tareas.usuario_id` → `auth.users.id`.
+- `tareas.categoria_id` → `categorias.id`.
+
+### 5. Eventos – eventos
+
+Almacena los eventos y compromisos registrados por los usuarios.
+
+| Campo | Tipo de dato | Descripción |
+|-------|--------------|-------------|
+| id | UUID | Identificador del evento. |
+| usuario_id | UUID | Identificador del usuario propietario. |
+| titulo | TEXT | Nombre o título del evento. |
+| fecha | DATE | Fecha programada del evento. |
+| hora | TIME | Hora programada del evento. |
+| creado_en | TIMESTAMPTZ | Fecha y hora de creación. |
+
+**Relación:**
+- `eventos.usuario_id` → `auth.users.id`.
+
+## Relaciones entre las tablas
+
+- Cada usuario autenticado puede tener un perfil asociado.
+- Cada usuario puede crear sus propias categorías.
+- Cada usuario puede registrar tareas.
+- Cada tarea puede estar asociada a una categoría.
+- Cada usuario puede registrar eventos.
+
+## Consideraciones
+
+- Los identificadores principales utilizan el tipo UUID.
+- Las fechas y horarios se almacenan mediante los tipos DATE, TIME y TIMESTAMPTZ, según corresponda.
+- Las tareas no tienen una fecha de vencimiento asignada en la estructura actual.
+- Las contraseñas y los datos de autenticación son administrados por Supabase Authentication.
+- La estructura documentada corresponde a las tablas y relaciones identificadas en el proyecto de Supabase.

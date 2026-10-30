@@ -1,0 +1,70 @@
+# DISEÑO DE UI – LUNA
+
+## Pantallas principales
+
+### 1. Perfil inicial
+
+- Pantalla de bienvenida que permite al usuario comenzar a utilizar LUNA.
+- Presentación de mensajes cercanos y motivadores.
+- Solicitud de información básica para personalizar la experiencia.
+- Acceso a la aplicación mediante el botón "Comenzar".
+
+### 2. Mis tareas
+
+- Presentación de las tareas organizadas en una lista.
+- Categorías predeterminadas: Todas, Laboral, Académico y Personal.
+- Posibilidad de crear categorías personalizadas.
+- Casillas de verificación para marcar tareas como completadas.
+- Diferenciación visual entre tareas pendientes y completadas.
+- Botón flotante (+) para crear nuevas tareas.
+- Las tareas no requieren una fecha de vencimiento.
+
+### 3. Calendario
+
+- Vista mensual para visualizar los días y eventos programados.
+- Identificación visual de los días que contienen eventos mediante tonos celestes.
+- Visualización de eventos asociados a fechas específicas.
+- Posibilidad de registrar y organizar eventos.
+
+### 4. Recordatorios
+
+- Presentación de eventos próximos en tarjetas.
+- Visualización de fechas y horarios.
+- Acciones disponibles para gestionar los eventos, como editar, posponer y eliminar.
+- Organización de los próximos eventos según su cercanía.
+
+### 5. Perfil y configuración
+
+- Visualización y edición de la información del perfil.
+- Posibilidad de seleccionar un avatar.
+- Acceso a las opciones de configuración de la aplicación.
+- Se contempla la posibilidad de personalizar la apariencia mediante un tema claro u oscuro, funcionalidad pendiente de desarrollo.
+
+### 6. Mi progreso
+
+- Sección prevista para mostrar estadísticas de actividad y progreso del usuario.
+- Se contempla incluir tareas completadas, pendientes y porcentajes de avance.
+- Esta funcionalidad se encuentra pendiente de desarrollo.
+
+## Aplicación de la identidad visual
+
+- **Colores:** utilización de una paleta basada principalmente en celeste (#4DB6E2), azul oscuro (#1E3A5F), blanco y tonos neutros.
+- **Tipografía:** uso de Nunito como tipografía principal.
+- **Botones:** diseños redondeados, con colores coherentes con la identidad visual.
+- **Tarjetas:** elementos con esquinas suavizadas y una distribución clara de la información.
+- **Formularios:** campos simples, etiquetas comprensibles y acciones fáciles de identificar.
+
+## Consistencia visual y experiencia de usuario
+
+Todas las pantallas mantienen los siguientes criterios:
+
+- Identidad visual coherente con la marca LUNA.
+- Uso de una interfaz limpia, sencilla y minimalista.
+- Lenguaje cercano, amigable y motivador.
+- Navegación intuitiva entre los distintos módulos.
+- Adaptación de la interfaz a computadoras, tablets y dispositivos móviles.
+- Organización de los elementos para evitar la sobrecarga visual.
+
+## Consideraciones futuras
+
+Se podrán incorporar nuevas funcionalidades y mejoras visuales en futuras versiones, incluyendo estadísticas de progreso más completas y herramientas de organización asistidas por inteligencia artificial.

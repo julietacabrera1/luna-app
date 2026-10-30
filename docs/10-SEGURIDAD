@@ -1,0 +1,67 @@
+# 10 - Seguridad
+
+## 1. Protección de datos
+
+LUNA utiliza Supabase como servicio de backend y base de datos PostgreSQL para almacenar la información de sus usuarios.
+
+Cada usuario cuenta con una cuenta propia y sus datos se encuentran asociados a su identificador de autenticación.
+
+La aplicación almacena información como:
+- Datos del perfil.
+- Tareas.
+- Categorías.
+- Eventos y recordatorios.
+
+## 2. Autenticación
+
+La autenticación de usuarios se gestiona mediante Supabase Auth.
+
+Las contraseñas son administradas por Supabase y no se almacenan directamente en las tablas de la aplicación.
+
+## 3. Seguridad de la base de datos
+
+Se utiliza Row Level Security (RLS) para controlar el acceso a los datos.
+
+Se verificó que RLS está activado en las siguientes tablas:
+- categorias
+- eventos
+- perfiles
+- tareas
+
+Las políticas de seguridad están configuradas para que cada usuario autenticado pueda gestionar únicamente sus propios registros.
+
+Las políticas revisadas contemplan las operaciones de lectura, creación, modificación y eliminación.
+
+Además, la tabla `tareas` utiliza una clave foránea compuesta entre `categoria_id` y `usuario_id`, vinculada con `categorias`. Esto evita asociar una tarea con una categoría perteneciente a otro usuario.
+
+## 4. Variables de entorno
+
+La conexión entre React y Supabase utiliza variables de entorno:
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+
+Estas variables permiten configurar la conexión desde el frontend. Su uso requiere mantener correctamente configuradas las políticas RLS.
+
+No se debe exponer la clave privada `service_role` en el código del frontend ni publicarla en repositorios.
+
+## 5. Buenas prácticas
+
+- Utilizar Supabase Auth para gestionar las sesiones.
+- Mantener activado RLS en las tablas que contienen información de usuarios.
+- Aplicar políticas de acceso según el identificador del usuario autenticado.
+- Evitar almacenar contraseñas directamente.
+- No publicar claves privadas ni credenciales.
+- Mantener las dependencias del proyecto actualizadas.
+- Utilizar conexiones HTTPS.
+
+## 6. Verificaciones realizadas
+
+Se revisaron las políticas RLS y las relaciones entre las tablas de la base de datos.
+
+Los resultados fueron satisfactorios en la revisión de configuración.
+
+Quedan como verificaciones complementarias:
+- Comprobar el aislamiento de datos entre usuarios.
+- Revisar la configuración de variables de entorno en Netlify.
+- Verificar periódicamente las dependencias y realizar copias de seguridad.

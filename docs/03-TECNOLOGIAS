@@ -1,0 +1,34 @@
+# TECNOLOGÍAS – LUNA
+
+## Stack elegido
+
+| Capa | Tecnología | Motivo |
+|------|------------|--------|
+| **Frontend** | React + Vite | Permite desarrollar una interfaz dinámica, moderna y adaptable. Vite facilita la configuración del entorno de desarrollo y agiliza la compilación del proyecto. |
+| **Lenguaje de programación** | JavaScript | Se utiliza para implementar la lógica, las interacciones y el funcionamiento de los componentes de la aplicación. |
+| **Estilos** | CSS | Permite definir la apariencia visual, los colores, la distribución y la adaptación de la interfaz a distintos dispositivos. |
+| **Base de datos** | PostgreSQL mediante Supabase | Permite almacenar y gestionar la información de los usuarios, tareas y eventos mediante una base de datos relacional. |
+| **Backend y servicios** | Supabase | Proporciona servicios de base de datos, autenticación y conexión entre el frontend y la información almacenada. |
+| **Repositorio** | GitHub | Facilita el control de versiones, el seguimiento de cambios y el almacenamiento del código fuente. |
+| **Publicación** | Netlify | Permite desplegar la aplicación web y mantenerla accesible mediante una dirección pública. |
+| **Asistencia con IA** | ChatGPT y Microsoft Copilot | Se utilizaron como herramientas de apoyo durante el desarrollo, la resolución de problemas, la documentación y la generación de recursos visuales. |
+
+## Justificación
+
+- **React + Vite:** permiten construir una aplicación web organizada en componentes reutilizables, con una interfaz dinámica y un entorno de desarrollo ágil.
+- **JavaScript:** permite implementar las funcionalidades y gestionar las interacciones del usuario.
+- **CSS:** facilita la creación de una identidad visual coherente y una interfaz adaptable a diferentes tamaños de pantalla.
+- **PostgreSQL mediante Supabase:** ofrece una estructura relacional para almacenar la información de manera organizada y mantener las relaciones entre los datos.
+- **Supabase:** simplifica la gestión de usuarios, la autenticación y el acceso a la base de datos.
+- **GitHub:** permite conservar el código fuente, realizar un seguimiento de los cambios y mantener un historial del desarrollo.
+- **Netlify:** facilita la publicación de la aplicación web y su acceso desde distintos dispositivos.
+- **ChatGPT y Microsoft Copilot:** brindaron asistencia en distintas etapas del proyecto. Sus resultados fueron revisados y adaptados según las necesidades de LUNA.
+
+## Herramientas complementarias
+
+Además del stack principal, se utilizaron las siguientes herramientas:
+
+- **Visual Studio Code:** entorno de desarrollo utilizado para escribir y editar el código.
+- **Node.js y npm:** permiten ejecutar el entorno de desarrollo y administrar las dependencias del proyecto.
+- **Canva:** utilizado para diseñar y editar recursos gráficos y piezas de comunicación visual.
+- **Vidogrid:** utilizado para la creación del video promocional mediante herramientas de inteligencia artificial.

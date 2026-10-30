@@ -1,0 +1,46 @@
+# TAREAS – LUNA
+
+## Etapas de trabajo
+
+### 1. Identidad de marca
+- [x] Definir nombre y eslogan
+- [x] Diseñar logo
+- [x] Seleccionar paleta de colores y tipografias
+- [ ] Ajustar tono de comunicacion
+
+---
+
+### 2. Especificaciones iniciales
+- [x] Redactar CONTEXTO.md
+- [x] Completar REQUERIMIENTOS.md
+- [x] Definir TECNOLOGIAS.md
+- [x] Crear ARQUITECTURA.md
+- [x] Documentar DATOS.md
+- [x] Describir DISEÑO-UI.md
+- [x] Establecer CONVENCIONES.md
+- [ ] Elaborar MEMORY.md
+- [ ] Revisar SEO.md
+- [ ] Redactar SEGURIDAD.md
+
+---
+
+### 3. Desarrollo
+- [ ] Configurar repositorio en GitHub
+- [ ] Crear estructura inicial del proyecto
+- [ ] Implementar componentes basicos (Inicio, Tareas, Calendario, Recordatorios, Perfil)
+- [ ] Conectar base de datos PostgreSQL
+- [ ] Integrar despliegue en Vercel
+
+---
+
+### 4. Pruebas
+- [ ] Realizar pruebas unitarias
+- [ ] Probar flujo de usuario completo
+- [ ] Ajustar errores y mejoras
+
+---
+
+### 5. Publicacion
+- [ ] Subir version inicial a la Bitacora Digital
+- [ ] Documentar proceso en informe escrito
+- [ ] Presentar evidencia de la carpeta completa

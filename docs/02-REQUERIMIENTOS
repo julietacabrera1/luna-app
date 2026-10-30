@@ -1,0 +1,20 @@
+# REQUERIMIENTOS – LUNA
+
+## Requerimientos funcionales
+
+| Código | Descripción | Prioridad |
+|--------|-------------|-----------|
+| RF01 | Permitir crear, editar y eliminar tareas. | Alta |
+| RF02 | Establecer recordatorios asociados a fechas y horarios específicos. | Alta |
+| RF03 | Visualizar eventos en un calendario, identificando los días en los que existen actividades programadas. | Alta |
+| RF04 | Clasificar tareas mediante categorías predeterminadas y personalizadas. | Media |
+| RF05 | Crear y guardar listas de tareas pendientes sin necesidad de asignarles una fecha. | Media |
+| RF06 | Mostrar estadísticas del progreso y de las tareas del usuario desde su perfil. | Baja |
+
+## Requerimientos no funcionales
+
+- **RNF01 – Interfaz simple y clara:** la aplicación debe ofrecer una navegación intuitiva que facilite el acceso a sus diferentes módulos.
+- **RNF02 – Compatibilidad móvil:** la interfaz debe adaptarse a distintos tamaños de pantalla, incluyendo celulares, tablets y computadoras.
+- **RNF03 – Bajo consumo de recursos:** la aplicación debe funcionar de manera fluida y optimizar el uso de los recursos del dispositivo.
+- **RNF04 – Seguridad en el almacenamiento de datos:** la información de los usuarios debe almacenarse de forma segura, garantizando que cada usuario pueda acceder únicamente a sus propios datos.
+- **RNF05 – Lenguaje cercano y motivador:** la aplicación debe utilizar mensajes claros, amigables y positivos para acompañar al usuario durante su experiencia.

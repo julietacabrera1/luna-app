@@ -1,0 +1,25 @@
+# ARQUITECTURA – LUNA
+
+## Descripción general
+
+LUNA utiliza una arquitectura cliente-servidor. La interfaz de usuario está desarrollada con React y Vite, mientras que Supabase proporciona los servicios de backend, autenticación y almacenamiento de datos mediante PostgreSQL.
+
+La aplicación se organiza en componentes y módulos que permiten separar las funcionalidades principales y facilitar su mantenimiento.
+
+## Estructura general del proyecto
+
+```plaintext
+luna-app/
+├── public/                 # Recursos estáticos de la aplicación
+├── src/
+│   ├── assets/             # Imágenes, iconos y otros recursos
+│   ├── components/         # Componentes reutilizables
+│   ├── styles/             # Hojas de estilo CSS
+│   ├── App.jsx             # Componente principal de la aplicación
+│   ├── main.jsx            # Punto de entrada de React
+│   └── ...                 # Otros módulos y componentes
+├── .env                    # Variables de entorno locales
+├── index.html              # Documento HTML principal
+├── package.json            # Dependencias y scripts del proyecto
+├── vite.config.js          # Configuración de Vite
+└── README.md               # Documentación general

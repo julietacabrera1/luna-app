@@ -1,0 +1,64 @@
+# CONVENCIONES DE CÓDIGO – LUNA
+
+## Nombres de archivos
+
+- Utilizar nombres descriptivos y mantener un criterio uniforme.
+- Los archivos de componentes React deben utilizar la extensión `.jsx`.
+- Los archivos JavaScript deben utilizar la extensión `.js`.
+- Los archivos de estilos deben utilizar la extensión `.css`.
+- Los componentes React deben nombrarse utilizando PascalCase, por ejemplo: `Calendario.jsx`, `RecordatorioCard.jsx`.
+- Para los demás archivos, utilizar nombres en minúsculas y separados por guiones medios, por ejemplo: `tareas-lista.js`, `perfil-usuario.js`.
+
+## Variables y constantes
+
+- Utilizar camelCase para nombrar variables.
+- Mantener los nombres en español, siguiendo el criterio utilizado en el proyecto.
+- Elegir nombres descriptivos que permitan comprender su propósito.
+- Utilizar MAYÚSCULAS para las constantes que representen valores fijos.
+
+Ejemplos:
+
+- Variables: `nombreUsuario`, `listaTareas`, `fechaEvento`.
+- Constantes: `COLOR_PREDETERMINADO`, `CATEGORIAS_INICIALES`.
+
+## Funciones
+
+- Utilizar camelCase para nombrar las funciones.
+- Mantener los nombres en español.
+- Elegir nombres que indiquen claramente la acción que realizan.
+
+Ejemplos:
+
+- `crearTarea()`
+- `eliminarRecordatorio()`
+- `actualizarPerfil()`
+- `guardarEvento()`
+
+## Componentes
+
+- Utilizar PascalCase para los nombres de los componentes React.
+- Mantener los componentes organizados dentro de la carpeta `components/`.
+- Siempre que sea posible, separar los componentes en archivos individuales para facilitar su reutilización y mantenimiento.
+- Utilizar nombres claros y relacionados con la función que cumple cada componente.
+
+Ejemplos:
+
+- `Calendario`
+- `RecordatorioCard`
+- `ListaTareas`
+- `PerfilUsuario`
+
+## Idioma del código
+
+- Utilizar principalmente el español para los nombres de variables, constantes y funciones.
+- Mantener un criterio uniforme en todo el proyecto.
+- Escribir los comentarios en español, procurando que sean claros y expliquen aspectos relevantes de la implementación.
+- Se pueden conservar términos técnicos en inglés cuando sean propios de las tecnologías utilizadas o de sus convenciones.
+
+## Organización y legibilidad
+
+- Mantener una indentación uniforme.
+- Evitar nombres de variables o funciones poco descriptivos.
+- Evitar duplicar código cuando sea posible reutilizar funciones o componentes.
+- Mantener los archivos organizados según su responsabilidad.
+- Procurar que el código sea sencillo de leer, comprender y mantener.
