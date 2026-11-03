@@ -1,16 +1,67 @@
-# React + Vite
+# 🌙 LUNA – Aplicación de organización personal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción del proyecto
 
-Currently, two official plugins are available:
+LUNA es una aplicación web de organización personal desarrollada para ayudar a estudiantes, trabajadores y otras personas a gestionar sus actividades cotidianas desde un único espacio.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Permite organizar tareas, administrar categorías, registrar eventos en un calendario, gestionar recordatorios y consultar estadísticas de progreso.
 
-## React Compiler
+El proyecto busca ofrecer una experiencia sencilla, accesible e intuitiva, facilitando la planificación y el seguimiento de las actividades diarias.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Funcionalidades principales
 
-## Expanding the ESLint configuration
+- **Gestión de tareas:** crear, editar, eliminar y marcar tareas como completadas.
+- **Categorías:** organizar las tareas mediante categorías predeterminadas y personalizadas.
+- **Calendario:** visualizar fechas y eventos registrados.
+- **Recordatorios:** consultar y administrar próximos eventos.
+- **Mi perfil:** acceder a la información del usuario.
+- **Mi progreso:** consultar estadísticas de tareas completadas y pendientes.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tecnologías utilizadas
+
+| Tecnología | Aplicación en el proyecto |
+|---|---|
+| React | Desarrollo de la interfaz y componentes. |
+| Vite | Entorno de desarrollo y construcción de producción. |
+| JavaScript | Lógica de la aplicación. |
+| CSS | Estilos e identidad visual. |
+| Supabase | Base de datos y autenticación. |
+| GitHub | Control de versiones y alojamiento del código. |
+| Netlify | Publicación de la aplicación web. |
+
+## Identidad visual
+
+La identidad visual de LUNA utiliza una paleta de colores orientada a transmitir claridad, tranquilidad y organización.
+
+- Celeste: `#4DB6E2`
+- Azul oscuro: `#1E3A5F`
+- Blanco y tonos grises.
+- Tipografía: Nunito.
+
+## Arquitectura y documentación
+
+El proyecto incorpora documentación y especificaciones para organizar el proceso de desarrollo mediante el enfoque SDD (Specification-Driven Development).
+
+Entre sus recursos se encuentran:
+
+- `CONSTITUCION.md`: principios del proyecto.
+- `AGENTS.md`: instrucciones y reglas para los agentes de IA.
+- `ChatGPT.md`: contexto y reglas de utilización de herramientas de IA.
+- `docs/`: documentación general del sistema.
+- `specs/`: especificaciones de las funcionalidades.
+- `multimedia/`: recursos gráficos, videos, evidencias y fichas de IA.
+
+## Instalación y ejecución local
+
+### Requisitos previos
+
+- Node.js.
+- npm.
+- Acceso al proyecto de Supabase.
+
+### Pasos
+
+1. Clonar el repositorio:
+
+   ```bash
+   git clone https://github.com/julietacabrera1/luna-app.git
