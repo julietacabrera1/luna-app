@@ -981,3 +981,168 @@ img {
 .boton-volver:hover {
   background: #d2ebf7;
 }
+
+/* =========================================
+   PANTALLA CÓMO HICIMOS LUNA
+   ========================================= */
+
+.como-hicimos-pagina {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 35px 20px;
+}
+
+.como-hicimos-contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.como-hicimos-encabezado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px 25px;
+  border: 1px solid var(--gris-claro, #E6EAF0);
+  border-radius: 22px;
+  background: #FFFFFF;
+  text-align: center;
+}
+
+.como-hicimos-logo {
+  width: 85px;
+  height: 85px;
+  margin-bottom: 15px;
+  object-fit: contain;
+}
+
+.como-hicimos-etiqueta {
+  margin-bottom: 8px;
+  color: var(--azul, #344A70);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.como-hicimos-encabezado h2 {
+  margin: 0 0 12px;
+  color: var(--azul, #344A70);
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.como-hicimos-encabezado p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--texto-secundario, #788496);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.como-hicimos-tarjeta {
+  padding: 25px;
+  border: 1px solid var(--gris-claro, #E6EAF0);
+  border-radius: 18px;
+  background: #FFFFFF;
+}
+
+.como-hicimos-tarjeta h3 {
+  margin: 0 0 15px;
+  color: var(--azul, #344A70);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.como-hicimos-tarjeta p {
+  margin: 0 0 12px;
+  color: var(--texto-secundario, #788496);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.como-hicimos-tarjeta p:last-child {
+  margin-bottom: 0;
+}
+
+.como-hicimos-herramientas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.como-hicimos-herramienta {
+  padding: 17px;
+  border-radius: 14px;
+  background: #F1F8FC;
+}
+
+.como-hicimos-herramienta h4 {
+  margin: 0 0 8px;
+  color: var(--azul, #344A70);
+  font-size: 0.98rem;
+  font-weight: 800;
+}
+
+.como-hicimos-herramienta p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.como-hicimos-identidad {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.como-hicimos-logo-identidad {
+  flex-shrink: 0;
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+}
+
+.como-hicimos-etiqueta-ia {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 6px 11px;
+  border-radius: 20px;
+  background: #EAF7FD;
+  color: var(--azul, #344A70);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+@media (max-width: 600px) {
+  .como-hicimos-pagina {
+    padding: 22px 14px;
+  }
+
+  .como-hicimos-encabezado {
+    padding: 28px 18px;
+  }
+
+  .como-hicimos-encabezado h2 {
+    font-size: 1.5rem;
+  }
+
+  .como-hicimos-tarjeta {
+    padding: 20px 17px;
+  }
+
+  .como-hicimos-herramientas {
+    grid-template-columns: 1fr;
+  }
+
+  .como-hicimos-identidad {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .como-hicimos-logo-identidad {
+    width: 65px;
+    height: 65px;
+  }
+}

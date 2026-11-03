@@ -18,8 +18,9 @@ const normalizarEvento = (evento) => ({
 });
 
 function Recordatorios() {
-  const hoy = obtenerFechaLocal();
-
+  const [ahora, setAhora] = useState(() => new Date());
+  const hoy = obtenerFechaLocal(ahora);
+  
   const [lista, setLista] = useState([]);
   const [usuarioId, setUsuarioId] = useState(null);
   const [cargando, setCargando] = useState(true);
@@ -35,6 +36,16 @@ function Recordatorios() {
 
   const [eventoEliminar, setEventoEliminar] = useState(null);
   const [eliminando, setEliminando] = useState(false);
+
+  useEffect(() => {
+  const actualizarHora = () => {
+    setAhora(new Date());
+  };
+
+  const intervalo = setInterval(actualizarHora, 60000);
+
+  return () => clearInterval(intervalo);
+}, []);
 
   useEffect(() => {
     let activo = true;
@@ -89,24 +100,24 @@ function Recordatorios() {
   }, []);
 
   const eventosProximos = lista
-    .filter((evento) => {
-      const fechaEvento = new Date(
-        `${evento.fecha}T${evento.hora}:00`
-      );
+  .filter((evento) => {
+    const fechaEvento = new Date(
+      `${evento.fecha}T${evento.hora}:00`
+    );
 
-      return fechaEvento.getTime() >= Date.now();
-    })
-    .sort((a, b) => {
-      const fechaA = new Date(
-        `${a.fecha}T${a.hora}:00`
-      ).getTime();
+    return fechaEvento.getTime() >= ahora.getTime();
+  })
+  .sort((a, b) => {
+    const fechaA = new Date(
+      `${a.fecha}T${a.hora}:00`
+    ).getTime();
 
-      const fechaB = new Date(
-        `${b.fecha}T${b.hora}:00`
-      ).getTime();
+    const fechaB = new Date(
+      `${b.fecha}T${b.hora}:00`
+    ).getTime();
 
-      return fechaA - fechaB;
-    });
+    return fechaA - fechaB;
+  });
 
   const formatearFecha = (fechaEvento) => {
     const [anio, mes, dia] = fechaEvento.split("-").map(Number);

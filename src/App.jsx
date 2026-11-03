@@ -13,6 +13,163 @@ import MiProgreso from "./componentes/MiProgreso";
 import "./styles/variables.css";
 import "./App.css";
 
+function ComoHicimos() {
+  return (
+    <section className="como-hicimos-pagina">
+      <div className="como-hicimos-contenido">
+
+        <header className="como-hicimos-encabezado">
+          <img
+            src="/imagenes/logo-luna.png.png"
+            alt="Logotipo de LUNA"
+            className="como-hicimos-logo"
+          />
+
+          <span className="como-hicimos-etiqueta">
+            TRANSPARENCIA Y USO DE IA
+          </span>
+
+          <h2>Cómo hicimos LUNA</h2>
+
+          <p>
+            LUNA nació como un proyecto para ayudar a las personas
+            a organizar sus tareas, actividades y responsabilidades
+            en un solo lugar.
+          </p>
+        </header>
+
+        <section className="como-hicimos-tarjeta">
+          <h3>¿Cómo utilizamos la inteligencia artificial?</h3>
+
+          <p>
+            Durante el desarrollo de LUNA utilizamos herramientas
+            de inteligencia artificial como apoyo para la programación,
+            la resolución de errores, la creación de recursos visuales
+            y la elaboración de materiales de presentación.
+          </p>
+
+          <p>
+            La inteligencia artificial fue una herramienta de asistencia:
+            las decisiones sobre el diseño, las funcionalidades y el
+            resultado final estuvieron bajo supervisión humana.
+          </p>
+        </section>
+
+        <section className="como-hicimos-tarjeta">
+          <h3>Herramientas utilizadas</h3>
+
+          <div className="como-hicimos-herramientas">
+
+            <article className="como-hicimos-herramienta">
+              <h4>ChatGPT</h4>
+              <p>
+                Se utilizó como apoyo para organizar requisitos,
+                elaborar documentación, comprender código y resolver
+                problemas durante el desarrollo.
+              </p>
+            </article>
+
+            <article className="como-hicimos-herramienta">
+              <h4>GitHub Copilot</h4>
+              <p>
+                Se utilizó como asistencia durante la escritura
+                y revisión de código.
+              </p>
+            </article>
+
+            <article className="como-hicimos-herramienta">
+              <h4>Microsoft Copilot</h4>
+              <p>
+                Se utilizó para generar y modificar imágenes
+                destinadas a la presentación del proyecto.
+              </p>
+            </article>
+
+            <article className="como-hicimos-herramienta">
+              <h4>Vidogrid</h4>
+              <p>
+                Se utilizó para generar clips de video que forman
+                parte del material promocional de LUNA.
+              </p>
+            </article>
+
+            <article className="como-hicimos-herramienta">
+              <h4>Canva</h4>
+              <p>
+                Se utilizó para diseñar composiciones gráficas,
+                editar imágenes y preparar materiales audiovisuales.
+              </p>
+            </article>
+
+          </div>
+        </section>
+
+        <section className="como-hicimos-tarjeta">
+          <h3>Identidad visual</h3>
+
+          <div className="como-hicimos-identidad">
+            <img
+              src="/imagenes/logo-luna.png.png"
+              alt="Logotipo de LUNA"
+              className="como-hicimos-logo-identidad"
+            />
+
+            <div>
+              <span className="como-hicimos-etiqueta-ia">
+                Generado con IA
+              </span>
+
+              <p>
+                El logotipo que identifica a LUNA fue generado con
+                asistencia de inteligencia artificial y seleccionado
+                para representar la identidad visual del proyecto.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="como-hicimos-tarjeta">
+          <h3>Materiales de presentación</h3>
+
+          <p>
+            Las imágenes y los clips generados con inteligencia artificial
+            se utilizaron en los materiales de presentación y en el video
+            promocional del proyecto. Estos recursos no forman parte de
+            las funcionalidades ni de las pantallas de la aplicación.
+          </p>
+
+          <span className="como-hicimos-etiqueta-ia">
+            Material audiovisual generado con IA
+          </span>
+        </section>
+
+        <section className="como-hicimos-tarjeta">
+          <h3>Supervisión y responsabilidad</h3>
+
+          <p>
+            Los resultados generados por las herramientas fueron revisados
+            antes de incorporarse al proyecto. El código se analizó y
+            probó para comprobar el funcionamiento de las funcionalidades.
+          </p>
+
+          <p>
+            También se revisaron los recursos visuales para detectar
+            posibles sesgos o representaciones poco diversas y realizar
+            correcciones cuando fue necesario.
+          </p>
+
+          <p>
+            En LUNA, la inteligencia artificial acompaña el proceso
+            de desarrollo, pero no reemplaza el criterio ni las decisiones
+            de las personas.
+          </p>
+        </section>
+
+      </div>
+    </section>
+  );
+}
+
 function App() {
   const [seccionActiva, setSeccionActiva] = useState("tareas");
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -30,25 +187,26 @@ function App() {
   ];
 
   const opcionesMenu = [
-    {
-      id: "perfil",
-      nombre: "Mi perfil",
-      descripcion: "Personalizá tu espacio",
-      icono: "♡",
-    },
-    {
-      id: "configuracion",
-      nombre: "Configuración",
-      descripcion: "Personalizá LUNA",
-      icono: "⚙",
-    },
-    {
-      id: "progreso",
-      nombre: "Mi progreso",
-      descripcion: "Conocé tus avances",
-      icono: "✦",
-    },
-  ];
+  {
+    id: "perfil",
+    nombre: "Mi perfil",
+    descripcion: "Personalizá tu espacio",
+    icono: "♡",
+  },
+
+  {
+    id: "progreso",
+    nombre: "Mi progreso",
+    descripcion: "Conocé tus avances",
+    icono: "↗",
+  },
+  {
+    id: "como-hicimos",
+    nombre: "Cómo hicimos LUNA",
+    descripcion: "Conocé cómo se creó el proyecto",
+    icono: "✧",
+  },
+];
 
   // Recuperar el perfil correspondiente a la cuenta.
   const cargarPerfil = async (usuario) => {
@@ -225,10 +383,6 @@ function App() {
     return <ListaTareas />;
   };
 
-  const opcionActiva = opcionesMenu.find(
-    (opcion) => opcion.id === pantallaMenu
-  );
-
   if (cargandoSesion) {
     return (
       <section className="perfil-inicial">
@@ -344,7 +498,7 @@ function App() {
         </nav>
       )}
 
-                 <main className="luna-vista">
+        <main className="luna-vista">
         {pantallaMenu ? (
           pantallaMenu === "perfil" ? (
             <>
@@ -365,6 +519,18 @@ function App() {
           ) : pantallaMenu === "progreso" ? (
             <>
               <MiProgreso />
+
+              <button
+                type="button"
+                className="boton-volver"
+                onClick={volverDesdeMenu}
+              >
+                ← Volver
+              </button>
+            </>
+          ) : pantallaMenu === "como-hicimos" ? (
+            <>
+              <ComoHicimos />
 
               <button
                 type="button"

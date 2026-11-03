@@ -137,7 +137,6 @@ function ListaTareas() {
   }, []);
 
   const pendientes = tareas.filter((t) => !t.completada).length;
-  const completadas = tareas.filter((t) => t.completada).length;
 
   const tareasFiltradas =
     filtro === "Todas"

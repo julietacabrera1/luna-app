@@ -1,5 +1,4 @@
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { supabase } from "../supabase";
 
 function PerfilUsuario({ perfil, alGuardarPerfil, alVolver }) {
@@ -20,12 +19,6 @@ function PerfilUsuario({ perfil, alGuardarPerfil, alVolver }) {
     "🦋",
     "🌸",
   ];
-
-  // Mantener los campos sincronizados con el perfil recibido.
-  useEffect(() => {
-    setNombre(perfil?.nombre || "");
-    setAvatar(perfil?.avatar || "🌙");
-  }, [perfil?.nombre, perfil?.avatar]);
 
   const guardarCambios = async (evento) => {
     evento.preventDefault();
